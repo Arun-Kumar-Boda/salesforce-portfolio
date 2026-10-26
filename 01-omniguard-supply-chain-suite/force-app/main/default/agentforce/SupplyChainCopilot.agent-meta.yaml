@@ -1,0 +1,14 @@
+agentName: Supply_Chain_Risk_Copilot
+label: Autonomous Supply Chain Risk Agent
+description: Monitors 3PL vendor telemetry, summarizes shipment bottlenecks, and executes autonomous ERP inventory rerouting.
+topics:
+  - name: Vendor_Disruption_Mitigation
+    label: Vendor Disruption & Rerouting
+    classificationDescription: Use when asked about delayed shipments, vendor risk scores, supply chain bottlenecks, or rerouting orders.
+    scope: Evaluate vendor risk using real-time Salesforce shipment data and trigger autonomous ERP mitigation when risk exceeds thresholds.
+    instructions:
+      - Always verify the vendor's current Risk_Score__c before recommending a supplier switch.
+      - Invoke Evaluate_Vendor_Risk_Auto_Mitigate when risk exceeds 75 or when requested by a Supply Chain Manager.
+    actions:
+      - name: Evaluate_Vendor_Risk_Auto_Mitigate
+        target: apex://VendorRiskAgentAction

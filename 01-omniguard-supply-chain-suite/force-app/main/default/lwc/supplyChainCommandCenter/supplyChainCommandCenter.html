@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="OmniGuard Supply Chain & Agentforce Command Center" icon-name="standard:flow">
+        <div slot="actions">
+            <lightning-button label="Refresh Telemetry" icon-name="utility:refresh" onclick={handleRefresh}></lightning-button>
+        </div>
+        <div class="slds-p-around_medium">
+            <div class="slds-m-bottom_medium">
+                <lightning-input lwc:ref="searchInput" type="search" label="Filter Vendors by Name" onchange={handleFilterChange}></lightning-input>
+            </div>
+            <template lwc:if={hasVendors}>
+                <lightning-datatable key-field="Id" data={filteredVendors} columns={columns} hide-checkbox-column onrowaction={handleRowAction}></lightning-datatable>
+            </template>
+            <template lwc:else>
+                <div class="slds-text-align_center slds-p-vertical_large slds-text-color_weak">
+                    No high-risk vendors currently detected in telemetry.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

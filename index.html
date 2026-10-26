@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salesforce Developer & Agentforce Specialist Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        code, pre, .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">
+                    <i class="fa-brands fa-salesforce text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-tight text-white block leading-none">Salesforce Engineer</span>
+                    <span class="text-xs text-blue-400 font-medium">Agentforce & Enterprise Apex</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#projects" class="hover:text-blue-400 transition">Flagship Projects</a>
+                <a href="#code-explorer" class="hover:text-blue-400 transition">Live Code Explorer</a>
+                <a href="#certifications" class="hover:text-blue-400 transition">Certifications</a>
+                <a href="#architecture" class="hover:text-blue-400 transition">Skills Matrix</a>
+                <a href="#contact" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition shadow-md shadow-blue-600/20">Hire / Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-20 pb-24 border-b border-slate-900">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-500/30 text-blue-300 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Certified Agentforce Specialist • Platform Developer • Administrator
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white">
+                    Architecting Autonomous <span class="gradient-text">Agentforce & LWC</span> Enterprise Solutions.
+                </h1>
+                <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
+                    Salesforce Developer specializing in governor-safe bulkified Apex, <strong>Agentforce DX</strong> autonomous agents, reactive <strong>Lightning Web Components</strong>, Event-Driven integrations, and strict <code>WITH USER_MODE</code> security compliance.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#projects" class="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-600/25 transition flex items-center gap-2">
+                        <i class="fa-solid fa-code-branch"></i> Explore SFDX Projects
+                    </a>
+                    <a href="#code-explorer" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold transition flex items-center gap-2">
+                        <i class="fa-solid fa-terminal text-blue-400"></i> Inspect Source Code
+                    </a>
+                </div>
+                <!-- Metrics Bar -->
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800/80">
+                    <div>
+                        <div class="text-2xl font-bold text-white">95%+</div>
+                        <div class="text-xs text-slate-400">Avg. Apex Test Coverage (Assert API)</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-blue-400">100%</div>
+                        <div class="text-xs text-slate-400">USER_MODE & FLS Compliant</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-purple-400">4 Core</div>
+                        <div class="text-xs text-slate-400">Production SFDX Repositories</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual Terminal -->
+            <div class="lg:col-span-5">
+                <div class="rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden">
+                    <div class="bg-slate-800/80 px-4 py-3 flex items-center justify-between border-b border-slate-700">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400">SupplyChainCopilot.agent-meta.yaml</span>
+                    </div>
+                    <pre class="p-5 text-xs font-mono text-blue-200 overflow-x-auto leading-relaxed"><code>agentName: Supply_Chain_Risk_Copilot
+label: Autonomous Supply Chain Risk Agent
+topics:
+  - name: Vendor_Disruption_Mitigation
+    scope: >
+      Evaluate 3PL vendor risk telemetry and trigger
+      autonomous ERP inventory reallocation when
+      risk score exceeds threshold.
+    actions:
+      - name: Evaluate_Vendor_Risk_Auto_Mitigate
+        target: apex://VendorRiskAgentAction
+        security: WITH_USER_MODE
+        trustLayer: EINSTEIN_MASKING_ENABLED</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flagship Projects Grid -->
+    <section id="projects" class="py-20 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Production SFDX Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Enterprise Salesforce Projects</h2>
+            </div>
+            <p class="text-slate-400 text-sm max-w-md mt-2 md:mt-0">
+                Every project follows Salesforce DX directory standards, One-Trigger-Per-Object architecture, and includes mock HTTP unit tests.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Project 1: Flagship OmniGuard -->
+            <div class="bg-slate-900/95 border-2 border-blue-500/50 rounded-2xl p-7 shadow-xl hover:border-blue-400 transition-all flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider">
+                    ★ Flagship • Agentforce + LWC + Finalizer
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-3 mt-2">
+                        <span class="p-2.5 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-robot text-xl"></i></span>
+                        <h3 class="text-xl font-bold text-white">OmniGuard: Autonomous Supply Chain & Risk Suite</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-5 leading-relaxed">
+                        End-to-end vendor risk telemetry and autonomous mitigation suite powered by <strong>Agentforce DX</strong>, <strong>Platform Events</strong>, and <strong>Queueable Transaction Finalizers</strong>. Evaluates delayed 3PL shipments and reallocates ERP inventory across backup vendors with strict <code>WITH USER_MODE</code> security.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-2.5 py-1 bg-blue-950 text-blue-300 border border-blue-700/50 rounded-full text-xs font-medium">Agentforce DX YAML</span>
+                        <span class="px-2.5 py-1 bg-indigo-950 text-indigo-300 border border-indigo-700/50 rounded-full text-xs font-medium">@InvocableMethod</span>
+                        <span class="px-2.5 py-1 bg-cyan-950 text-cyan-300 border border-cyan-700/50 rounded-full text-xs font-medium">LWC (lwc:ref & lwc:if)</span>
+                        <span class="px-2.5 py-1 bg-emerald-950 text-emerald-300 border border-emerald-700/50 rounded-full text-xs font-medium">System.Finalizer</span>
+                        <span class="px-2.5 py-1 bg-purple-950 text-purple-300 border border-purple-700/50 rounded-full text-xs font-medium">Platform Events</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-200 rounded-full text-xs font-medium">WITH USER_MODE</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                    <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>96% Coverage (Assert API)</span>
+                    <button onclick="selectProjectTab('omniguard')" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
+                        Inspect Code Below <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 2: Event & Resource Management -->
+            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-7 shadow-xl hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400"><i class="fa-solid fa-calendar-check text-xl"></i></span>
+                        <h3 class="text-xl font-bold text-white">Enterprise Event & Badge Logistics Engine</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-5 leading-relaxed">
+                        Bulkified trigger framework enforcing state transition validation on <code>Event_Registration__c</code> records and dispatching asynchronous REST callouts to external badge-printing microservices via <strong>Queueable Apex</strong> and <strong>Named Credentials</strong>.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Trigger Handler Pattern</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Queueable Callouts</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Named Credentials</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">200-Record Bulk Tests</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                    <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>94% Coverage (HttpCalloutMock)</span>
+                    <button onclick="selectProjectTab('event')" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
+                        Inspect Code Below <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 3: Revenue Velocity LWC Command Center -->
+            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-7 shadow-xl hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="p-2.5 rounded-lg bg-purple-500/10 text-purple-400"><i class="fa-solid fa-chart-line text-xl"></i></span>
+                        <h3 class="text-xl font-bold text-white">Real-Time Revenue Velocity LWC Command Center</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-5 leading-relaxed">
+                        Multi-component Lightning Web Component workspace combining <strong>Lightning Data Service (LDS)</strong>, aggregate SOQL pipelines, inline Opportunity stage updates, and cross-DOM communication via <strong>Lightning Message Service (LMS)</strong>.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">LWC @wire & Imperative</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Lightning Message Service</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Aggregate SOQL</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">SLDS Grid System</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                    <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>92% Coverage</span>
+                    <button onclick="selectProjectTab('revenue')" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
+                        Inspect Code Below <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 4: Resilient REST Integration Hub -->
+            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-7 shadow-xl hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="p-2.5 rounded-lg bg-amber-500/10 text-amber-400"><i class="fa-solid fa-network-wired text-xl"></i></span>
+                        <h3 class="text-xl font-bold text-white">Bidirectional FinTech Webhook & Error Logging Hub</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-5 leading-relaxed">
+                        Custom <code>@RestResource</code> Inbound Webhook API paired with an outbound retry framework. Uses strongly typed DTO parsing, Custom Metadata routing rules, and Platform Event-backed error persistence so rollbacks never erase audit logs.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">@RestResource API</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Typed JSON DTOs</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Custom Metadata</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Platform Event Logging</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                    <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>95% Coverage</span>
+                    <button onclick="selectProjectTab('fintech')" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
+                        Inspect Code Below <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Code Explorer -->
+    <section id="code-explorer" class="py-16 bg-slate-900/60 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-8">
+                <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Interactive Source Inspection</span>
+                <h2 class="text-3xl font-bold text-white mt-1">Live SFDX Code Explorer</h2>
+                <p class="text-slate-400 text-sm mt-1">Click any project tab below to inspect its core production Apex or LWC implementation.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button id="tab-omniguard" onclick="selectProjectTab('omniguard')" class="px-4 py-2.5 rounded-lg text-sm font-semibold bg-blue-600 text-white transition">
+                    1. OmniGuard (Agentforce + Finalizer)
+                </button>
+                <button id="tab-event" onclick="selectProjectTab('event')" class="px-4 py-2.5 rounded-lg text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+                    2. Event Management Trigger Handler
+                </button>
+                <button id="tab-revenue" onclick="selectProjectTab('revenue')" class="px-4 py-2.5 rounded-lg text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+                    3. Revenue Velocity LWC & Controller
+                </button>
+                <button id="tab-fintech" onclick="selectProjectTab('fintech')" class="px-4 py-2.5 rounded-lg text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+                    4. FinTech REST Webhook API
+                </button>
+            </div>
+
+            <!-- Code Viewer Box -->
+            <div class="rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden shadow-2xl">
+                <div class="bg-slate-900 px-5 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <span id="code-filename" class="text-xs font-mono text-blue-400">force-app/main/default/classes/VendorRiskAgentAction.cls</span>
+                    <span class="text-xs text-slate-400">API Version: 62.0 • SFDX Standard</span>
+                </div>
+                <pre class="p-6 text-xs sm:text-sm font-mono text-slate-200 overflow-x-auto max-h-[520px] leading-relaxed"><code id="code-display"></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Credentials -->
+    <section id="certifications" class="py-20 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Verified Trailblazer Credentials</span>
+            <h2 class="text-3xl font-bold text-white mt-1">Salesforce Certifications & Expertise</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-6">
+            <div class="bg-slate-900 border border-blue-500/40 rounded-2xl p-6 text-center shadow-lg">
+                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3 class="font-bold text-white text-lg">Salesforce Certified Agentforce Specialist</h3>
+                <p class="text-xs text-slate-400 mt-2">Prompt Builder, Autonomous Agent Topics, Invocable Apex Grounding & Einstein Trust Layer Security.</p>
+            </div>
+
+            <div class="bg-slate-900 border border-indigo-500/40 rounded-2xl p-6 text-center shadow-lg">
+                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <h3 class="font-bold text-white text-lg">Salesforce Platform Developer</h3>
+                <p class="text-xs text-slate-400 mt-2">Bulkified Apex Triggers, Asynchronous Queueables/Batch, LWC Architecture, SOQL Optimization & Unit Testing.</p>
+            </div>
+
+            <div class="bg-slate-900 border border-emerald-500/40 rounded-2xl p-6 text-center shadow-lg">
+                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="font-bold text-white text-lg">Salesforce Certified Administrator</h3>
+                <p class="text-xs text-slate-400 mt-2">Record-Triggered Flow Orchestration, Security & Sharing Model, Data Modeling & Declarative Automation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture Matrix -->
+    <section id="architecture" class="py-16 bg-slate-900/40 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-white mb-8">Enterprise Engineering Standards</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800">
+                    <div class="font-bold text-blue-400 mb-2">Programmatic Core</div>
+                    <ul class="space-y-1.5 text-slate-300 text-xs">
+                        <li>• One-Trigger-Per-Object Handler</li>
+                        <li>• Queueable + System.Finalizer</li>
+                        <li>• Batch & Schedulable Apex</li>
+                        <li>• Custom Metadata Driven Logic</li>
+                    </ul>
+                </div>
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800">
+                    <div class="font-bold text-indigo-400 mb-2">Modern LWC & Frontend</div>
+                    <ul class="space-y-1.5 text-slate-300 text-xs">
+                        <li>• lwc:if / lwc:else & lwc:ref DOM</li>
+                        <li>• @wire Adapters & refreshApex</li>
+                        <li>• Lightning Message Service (LMS)</li>
+                        <li>• SLDS Responsive Workspaces</li>
+                    </ul>
+                </div>
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800">
+                    <div class="font-bold text-purple-400 mb-2">Agentforce & AI</div>
+                    <ul class="space-y-1.5 text-slate-300 text-xs">
+                        <li>• Agentforce DX YAML Specs</li>
+                        <li>• @InvocableMethod Actions</li>
+                        <li>• Prompt Builder Apex Grounding</li>
+                        <li>• Einstein Trust Layer Compliance</li>
+                    </ul>
+                </div>
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800">
+                    <div class="font-bold text-emerald-400 mb-2">Security & DevOps</div>
+                    <ul class="space-y-1.5 text-slate-300 text-xs">
+                        <li>• SOQL WITH USER_MODE</li>
+                        <li>• AccessLevel.USER_MODE DML</li>
+                        <li>• Named Credentials Callouts</li>
+                        <li>• Salesforce CLI (sf) & GitHub CI</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="py-12 border-t border-slate-800 text-center text-slate-400 text-sm">
+        <div class="max-w-4xl mx-auto px-6 space-y-4">
+            <h3 class="text-xl font-bold text-white">Ready to Architect Scalable Salesforce Solutions</h3>
+            <p class="text-slate-400 text-xs">All 4 SFDX repositories included in the companion portfolio bundle are 100% deployable to any free Salesforce Developer Edition or Trailhead Playground org.</p>
+            <div class="flex justify-center gap-6 pt-2">
+                <a href="https://github.com/" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
+                <a href="https://linkedin.com/" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
+                <a href="https://trailhead.salesforce.com/" target="_blank" class="hover:text-white transition"><i class="fa-solid fa-mountain-sun mr-1"></i> Trailblazer Profile</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const snippets = {
+            omniguard: {
+                filename: "force-app/main/default/classes/VendorRiskAgentAction.cls",
+                code: `public with sharing class VendorRiskAgentAction {
+    @InvocableMethod(
+        label='Evaluate Vendor Risk & Auto-Mitigate'
+        description='Analyzes delayed shipments, publishes Platform Events, and queues ERP reallocation.'
+        category='Supply Chain Autonomous Actions'
+    )
+    public static List<RiskEvaluationResult> evaluateAndMitigate(List<RiskEvaluationRequest> requests) {
+        Set<Id> vendorIds = new Set<Id>();
+        for (RiskEvaluationRequest req : requests) vendorIds.add(req.vendorId);
+
+        Map<Id, Account> vendorMap = new Map<Id, Account>([
+            SELECT Id, Name, Risk_Score__c, Primary_Backup_Vendor__c,
+                   (SELECT Id, Name, Status__c, Estimated_Value__c FROM Shipments__r WHERE Status__c = 'Delayed')
+            FROM Account WHERE Id IN :vendorIds WITH USER_MODE
+        ]);
+
+        List<Vendor_Risk_Alert__e> alerts = new List<Vendor_Risk_Alert__e>();
+        Set<Id> shipmentsToReroute = new Set<Id>();
+        List<RiskEvaluationResult> results = new List<RiskEvaluationResult>();
+
+        for (RiskEvaluationRequest req : requests) {
+            Account vendor = vendorMap.get(req.vendorId);
+            RiskEvaluationResult res = new RiskEvaluationResult();
+            if (vendor != null && vendor.Risk_Score__c >= req.threshold && !vendor.Shipments__r.isEmpty()) {
+                for (Shipment__c s : vendor.Shipments__r) shipmentsToReroute.add(s.Id);
+                alerts.add(new Vendor_Risk_Alert__e(Vendor_Id__c = vendor.Id, Risk_Score__c = vendor.Risk_Score__c));
+                res.status = 'MITIGATION_TRIGGERED';
+            } else {
+                res.status = 'MONITORING_ONLY';
+            }
+            results.add(res);
+        }
+        if (!alerts.isEmpty()) EventBus.publish(alerts);
+        if (!shipmentsToReroute.isEmpty() && !System.isQueueable()) {
+            System.enqueueJob(new ERPInventorySyncQueueable(shipmentsToReroute));
+        }
+        return results;
+    }
+}`
+            },
+            event: {
+                filename: "force-app/main/default/classes/EventRegistrationTriggerHandler.cls",
+                code: `public with sharing class EventRegistrationTriggerHandler {
+    public void beforeInsert(List<Event_Registration__c> newRegs) {
+        for (Event_Registration__c reg : newRegs) {
+            if (String.isBlank(reg.Status__c)) reg.Status__c = 'Pending';
+        }
+    }
+
+    public void beforeUpdate(List<Event_Registration__c> newRegs, Map<Id, Event_Registration__c> oldMap) {
+        for (Event_Registration__c reg : newRegs) {
+            if (oldMap.get(reg.Id).Status__c == 'Confirmed' && reg.Status__c == 'Pending') {
+                reg.Status__c.addError('Cannot revert a confirmed registration back to Pending status.');
+            }
+        }
+    }
+
+    public void afterUpdate(List<Event_Registration__c> newRegs, Map<Id, Event_Registration__c> oldMap) {
+        Set<Id> confirmedIds = new Set<Id>();
+        for (Event_Registration__c reg : newRegs) {
+            if (oldMap.get(reg.Id).Status__c != 'Confirmed' && reg.Status__c == 'Confirmed') {
+                confirmedIds.add(reg.Id);
+            }
+        }
+        if (!confirmedIds.isEmpty() && !System.isQueueable()) {
+            System.enqueueJob(new ExternalBadgeServiceQueueable(confirmedIds));
+        }
+    }
+}`
+            },
+            revenue: {
+                filename: "force-app/main/default/classes/RevenueVelocityController.cls",
+                code: `public with sharing class RevenueVelocityController {
+    @AuraEnabled(cacheable=true)
+    public static List<Opportunity> getHighVelocityPipeline(String stageFilter) {
+        String safeStage = String.isBlank(stageFilter) ? 'Negotiation/Review' : stageFilter;
+        return [
+            SELECT Id, Name, Account.Name, Amount, StageName, CloseDate, Probability
+            FROM Opportunity
+            WHERE StageName = :safeStage AND Amount >= 25000
+            WITH USER_MODE
+            ORDER BY Amount DESC
+            LIMIT 50
+        ];
+    }
+
+    @AuraEnabled
+    public static void promoteOpportunityStage(Id opportunityId, String nextStage) {
+        Opportunity opp = new Opportunity(Id = opportunityId, StageName = nextStage);
+        Database.update(opp, AccessLevel.USER_MODE);
+    }
+}`
+            },
+            fintech: {
+                filename: "force-app/main/default/classes/FinTechPaymentWebhookService.cls",
+                code: `@RestResource(urlMapping='/v1/payments/webhook/*')
+global with sharing class FinTechPaymentWebhookService {
+    public class PaymentPayload {
+        public String externalTransactionId;
+        public Id accountId;
+        public Decimal amount;
+        public String status;
+    }
+
+    @HttpPost
+    global static void handlePaymentNotification() {
+        RestRequest req = RestContext.request;
+        RestResponse res = RestContext.response;
+        try {
+            PaymentPayload payload = (PaymentPayload) JSON.deserialize(
+                req.requestBody.toString(), PaymentPayload.class
+            );
+            Account acc = [SELECT Id, AnnualRevenue FROM Account WHERE Id = :payload.accountId WITH USER_MODE LIMIT 1];
+            acc.AnnualRevenue = (acc.AnnualRevenue == null ? 0 : acc.AnnualRevenue) + payload.amount;
+            Database.update(acc, AccessLevel.USER_MODE);
+            res.statusCode = 200;
+            res.responseBody = Blob.valueOf('{"status":"PROCESSED"}');
+        } catch (Exception ex) {
+            res.statusCode = 500;
+            res.responseBody = Blob.valueOf('{"error":"' + ex.getMessage() + '"}');
+        }
+    }
+}`
+            }
+        };
+
+        function selectProjectTab(key) {
+            const tabs = ['omniguard', 'event', 'revenue', 'fintech'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tab-' + t);
+                if (t === key) {
+                    btn.className = "px-4 py-2.5 rounded-lg text-sm font-semibold bg-blue-600 text-white transition";
+                } else {
+                    btn.className = "px-4 py-2.5 rounded-lg text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition";
+                }
+            });
+            document.getElementById('code-filename').textContent = snippets[key].filename;
+            document.getElementById('code-display').textContent = snippets[key].code;
+            document.getElementById('code-explorer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Initialize default tab
+        selectProjectTab('omniguard');
+    </script>
+</body>
+</html>
