@@ -3,511 +3,814 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salesforce Developer & Agentforce Specialist Portfolio</title>
+    <title>Arun Kumar Boda | Salesforce Developer & Agentforce Specialist</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        code, pre, .font-mono { font-family: 'JetBrains Mono', monospace; }
-        .glass-card {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        salesforce: {
+                            blue: '#0176D3',
+                            dark: '#032D60',
+                            light: '#F3F8FC',
+                            accent: '#1B96FF',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .salesforce-gradient {
+            background: linear-gradient(135deg, #032D60 0%, #0176D3 100%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(1 118 211 / 0.15), 0 8px 10px -6px rgb(1 118 211 / 0.15);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-salesforce-blue selection:text-white">
 
-    <!-- Top Navigation -->
-    <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">
-                    <i class="fa-brands fa-salesforce text-xl"></i>
+    <!-- Notification Toast Modal -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 ease-in-out bg-slate-900 border border-slate-700 text-white px-5 py-4 rounded-xl shadow-2xl flex items-center space-x-3">
+        <div id="toast-icon" class="text-salesforce-blue">
+            <i data-lucide="check-circle" class="w-6 h-6"></i>
+        </div>
+        <div>
+            <h4 id="toast-title" class="font-semibold text-sm">Notification</h4>
+            <p id="toast-msg" class="text-xs text-slate-400">Action completed successfully.</p>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl salesforce-gradient flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-salesforce-blue/30 group-hover:scale-105 transition-transform">
+                    AK
                 </div>
                 <div>
-                    <span class="font-bold text-lg tracking-tight text-white block leading-none">Salesforce Engineer</span>
-                    <span class="text-xs text-blue-400 font-medium">Agentforce & Enterprise Apex</span>
+                    <span class="font-bold text-lg text-white tracking-tight">Arun Kumar Boda</span>
+                    <span class="block text-xs text-salesforce-accent font-medium">Salesforce Developer & Agentforce Specialist</span>
                 </div>
             </a>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                <a href="#projects" class="hover:text-blue-400 transition">Flagship Projects</a>
-                <a href="#code-explorer" class="hover:text-blue-400 transition">Live Code Explorer</a>
-                <a href="#certifications" class="hover:text-blue-400 transition">Certifications</a>
-                <a href="#architecture" class="hover:text-blue-400 transition">Skills Matrix</a>
-                <a href="#contact" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition shadow-md shadow-blue-600/20">Hire / Connect</a>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#highlights" class="hover:text-salesforce-accent transition-colors">Why Hire Me</a>
+                <a href="#about" class="hover:text-salesforce-accent transition-colors">Certifications</a>
+                <a href="#projects" class="hover:text-salesforce-accent transition-colors">Featured Solutions</a>
+                <a href="#skills" class="hover:text-salesforce-accent transition-colors">Core Skills</a>
+                <a href="#contact" class="hover:text-salesforce-accent transition-colors">Contact</a>
             </nav>
+
+            <!-- Actions -->
+            <div class="hidden md:flex items-center space-x-4">
+                <button onclick="openResumeModal()" class="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-salesforce-accent border border-salesforce-blue/40 rounded-lg hover:bg-salesforce-blue/10 transition-colors flex items-center space-x-2">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>Resume</span>
+                </button>
+                <a href="#contact" class="px-5 py-2.5 text-sm font-semibold text-white salesforce-gradient rounded-xl shadow-lg shadow-salesforce-blue/30 hover:opacity-90 transition-opacity">
+                    Let's Connect
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3">
+            <a href="#highlights" class="block text-slate-300 hover:text-salesforce-accent font-medium py-1">Why Hire Me</a>
+            <a href="#about" class="block text-slate-300 hover:text-salesforce-accent font-medium py-1">Certifications</a>
+            <a href="#projects" class="block text-slate-300 hover:text-salesforce-accent font-medium py-1">Featured Solutions</a>
+            <a href="#skills" class="block text-slate-300 hover:text-salesforce-accent font-medium py-1">Core Skills</a>
+            <a href="#contact" class="block text-slate-300 hover:text-salesforce-accent font-medium py-1">Contact</a>
+            <div class="pt-2 flex space-x-3">
+                <button onclick="openResumeModal()" class="flex-1 py-2 text-xs font-semibold text-salesforce-accent border border-salesforce-blue/40 rounded-lg text-center">Resume</button>
+                <a href="#contact" class="flex-1 py-2 text-xs font-semibold text-white salesforce-gradient rounded-lg text-center">Hire Me</a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden pt-20 pb-24 border-b border-slate-900">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-500/30 text-blue-300 text-xs font-semibold">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Certified Agentforce Specialist • Platform Developer • Administrator
-                </div>
-                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white">
-                    Architecting Autonomous <span class="gradient-text">Agentforce & LWC</span> Enterprise Solutions.
-                </h1>
-                <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
-                    Salesforce Developer specializing in governor-safe bulkified Apex, <strong>Agentforce DX</strong> autonomous agents, reactive <strong>Lightning Web Components</strong>, Event-Driven integrations, and strict <code>WITH USER_MODE</code> security compliance.
-                </p>
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="#projects" class="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-600/25 transition flex items-center gap-2">
-                        <i class="fa-solid fa-code-branch"></i> Explore SFDX Projects
-                    </a>
-                    <a href="#code-explorer" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold transition flex items-center gap-2">
-                        <i class="fa-solid fa-terminal text-blue-400"></i> Inspect Source Code
-                    </a>
-                </div>
-                <!-- Metrics Bar -->
-                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800/80">
-                    <div>
-                        <div class="text-2xl font-bold text-white">95%+</div>
-                        <div class="text-xs text-slate-400">Avg. Apex Test Coverage (Assert API)</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-blue-400">100%</div>
-                        <div class="text-xs text-slate-400">USER_MODE & FLS Compliant</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-purple-400">4 Core</div>
-                        <div class="text-xs text-slate-400">Production SFDX Repositories</div>
-                    </div>
-                </div>
-            </div>
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+        <!-- Background Glow Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-salesforce-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-72 h-72 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
 
-            <!-- Hero Visual Terminal -->
-            <div class="lg:col-span-5">
-                <div class="rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden">
-                    <div class="bg-slate-800/80 px-4 py-3 flex items-center justify-between border-b border-slate-700">
-                        <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-rose-500"></span>
-                            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                        </div>
-                        <span class="text-xs font-mono text-slate-400">SupplyChainCopilot.agent-meta.yaml</span>
-                    </div>
-                    <pre class="p-5 text-xs font-mono text-blue-200 overflow-x-auto leading-relaxed"><code>agentName: Supply_Chain_Risk_Copilot
-label: Autonomous Supply Chain Risk Agent
-topics:
-  - name: Vendor_Disruption_Mitigation
-    scope: >
-      Evaluate 3PL vendor risk telemetry and trigger
-      autonomous ERP inventory reallocation when
-      risk score exceeds threshold.
-    actions:
-      - name: Evaluate_Vendor_Risk_Auto_Mitigate
-        target: apex://VendorRiskAgentAction
-        security: WITH_USER_MODE
-        trustLayer: EINSTEIN_MASKING_ENABLED</code></pre>
-                </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-salesforce-accent text-xs font-semibold mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Available for Opportunities • Platform Developer I & Agentforce Certified</span>
             </div>
-        </div>
-    </section>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight">
+                Transforming Business Operations on the <span class="bg-gradient-to-r from-salesforce-accent via-blue-400 to-indigo-400 bg-clip-text text-transparent">Salesforce Platform</span>
+            </h1>
 
-    <!-- Flagship Projects Grid -->
-    <section id="projects" class="py-20 max-w-7xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <div>
-                <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Production SFDX Portfolio</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Enterprise Salesforce Projects</h2>
-            </div>
-            <p class="text-slate-400 text-sm max-w-md mt-2 md:mt-0">
-                Every project follows Salesforce DX directory standards, One-Trigger-Per-Object architecture, and includes mock HTTP unit tests.
+            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto font-normal leading-relaxed">
+                Hi, I'm <strong class="text-white">Arun Kumar Boda</strong>. I design and deliver high-impact Salesforce solutions—combining autonomous <strong class="text-slate-200">Agentforce AI</strong>, intuitive <strong class="text-slate-200">Lightning Web Components (LWC)</strong>, automated <strong class="text-slate-200">Flows</strong>, and scalable <strong class="text-slate-200">Apex integrations</strong> that drive measurable business efficiency.
             </p>
-        </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Project 1: Flagship OmniGuard -->
-            <div class="bg-slate-900/95 border-2 border-blue-500/50 rounded-2xl p-7 shadow-xl hover:border-blue-400 transition-all flex flex-col justify-between relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider">
-                    ★ Flagship • Agentforce + LWC + Finalizer
-                </div>
-                <div>
-                    <div class="flex items-center gap-3 mb-3 mt-2">
-                        <span class="p-2.5 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-robot text-xl"></i></span>
-                        <h3 class="text-xl font-bold text-white">OmniGuard: Autonomous Supply Chain & Risk Suite</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-5 leading-relaxed">
-                        End-to-end vendor risk telemetry and autonomous mitigation suite powered by <strong>Agentforce DX</strong>, <strong>Platform Events</strong>, and <strong>Queueable Transaction Finalizers</strong>. Evaluates delayed 3PL shipments and reallocates ERP inventory across backup vendors with strict <code>WITH USER_MODE</code> security.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-2.5 py-1 bg-blue-950 text-blue-300 border border-blue-700/50 rounded-full text-xs font-medium">Agentforce DX YAML</span>
-                        <span class="px-2.5 py-1 bg-indigo-950 text-indigo-300 border border-indigo-700/50 rounded-full text-xs font-medium">@InvocableMethod</span>
-                        <span class="px-2.5 py-1 bg-cyan-950 text-cyan-300 border border-cyan-700/50 rounded-full text-xs font-medium">LWC (lwc:ref & lwc:if)</span>
-                        <span class="px-2.5 py-1 bg-emerald-950 text-emerald-300 border border-emerald-700/50 rounded-full text-xs font-medium">System.Finalizer</span>
-                        <span class="px-2.5 py-1 bg-purple-950 text-purple-300 border border-purple-700/50 rounded-full text-xs font-medium">Platform Events</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-200 rounded-full text-xs font-medium">WITH USER_MODE</span>
-                    </div>
-                </div>
-                <div class="flex items-center justify-between pt-4 border-t border-slate-800">
-                    <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>96% Coverage (Assert API)</span>
-                    <button onclick="selectProjectTab('omniguard')" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
-                        Inspect Code Below <i class="fa-solid fa-arrow-down text-xs"></i>
-                    </button>
-                </div>
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <a href="#projects" class="px-8 py-3.5 text-sm font-semibold text-white salesforce-gradient rounded-xl shadow-xl shadow-salesforce-blue/25 hover:scale-105 transition-transform flex items-center space-x-2">
+                    <span>View Solution Case Studies</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+                <button onclick="openResumeModal()" class="px-8 py-3.5 text-sm font-semibold text-slate-200 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 hover:text-white transition-all flex items-center space-x-2">
+                    <i data-lucide="download" class="w-4 h-4 text-salesforce-accent"></i>
+                    <span>Download Resume</span>
+                </button>
+                <a href="https://github.com/Arun-Kumar-Boda" target="_blank" class="px-8 py-3.5 text-sm font-semibold text-slate-200 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 hover:text-white transition-all flex items-center space-x-2">
+                    <i data-lucide="github" class="w-4 h-4 text-salesforce-accent"></i>
+                    <span>GitHub Profile</span>
+                </a>
             </div>
 
-            <!-- Project 2: Event & Resource Management -->
-            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-7 shadow-xl hover:border-slate-700 transition-all flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400"><i class="fa-solid fa-calendar-check text-xl"></i></span>
-                        <h3 class="text-xl font-bold text-white">Enterprise Event & Badge Logistics Engine</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-5 leading-relaxed">
-                        Bulkified trigger framework enforcing state transition validation on <code>Event_Registration__c</code> records and dispatching asynchronous REST callouts to external badge-printing microservices via <strong>Queueable Apex</strong> and <strong>Named Credentials</strong>.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Trigger Handler Pattern</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Queueable Callouts</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Named Credentials</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">200-Record Bulk Tests</span>
-                    </div>
+            <!-- Quick Stats Bar (Recruiter At-A-Glance) -->
+            <div class="mt-20 pt-10 border-t border-slate-900 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800/80">
+                    <span class="block text-3xl font-extrabold text-white">4x</span>
+                    <span class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1 block">Salesforce Certified</span>
                 </div>
-                <div class="flex items-center justify-between pt-4 border-t border-slate-800">
-                    <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>94% Coverage (HttpCalloutMock)</span>
-                    <button onclick="selectProjectTab('event')" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
-                        Inspect Code Below <i class="fa-solid fa-arrow-down text-xs"></i>
-                    </button>
+                <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800/80">
+                    <span class="block text-3xl font-extrabold text-salesforce-accent">100%</span>
+                    <span class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1 block">Security & Governor Safe</span>
                 </div>
-            </div>
-
-            <!-- Project 3: Revenue Velocity LWC Command Center -->
-            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-7 shadow-xl hover:border-slate-700 transition-all flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="p-2.5 rounded-lg bg-purple-500/10 text-purple-400"><i class="fa-solid fa-chart-line text-xl"></i></span>
-                        <h3 class="text-xl font-bold text-white">Real-Time Revenue Velocity LWC Command Center</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-5 leading-relaxed">
-                        Multi-component Lightning Web Component workspace combining <strong>Lightning Data Service (LDS)</strong>, aggregate SOQL pipelines, inline Opportunity stage updates, and cross-DOM communication via <strong>Lightning Message Service (LMS)</strong>.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">LWC @wire & Imperative</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Lightning Message Service</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Aggregate SOQL</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">SLDS Grid System</span>
-                    </div>
+                <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800/80">
+                    <span class="block text-3xl font-extrabold text-white">95%+</span>
+                    <span class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1 block">Quality Assurance Coverage</span>
                 </div>
-                <div class="flex items-center justify-between pt-4 border-t border-slate-800">
-                    <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>92% Coverage</span>
-                    <button onclick="selectProjectTab('revenue')" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
-                        Inspect Code Below <i class="fa-solid fa-arrow-down text-xs"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Project 4: Resilient REST Integration Hub -->
-            <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-7 shadow-xl hover:border-slate-700 transition-all flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="p-2.5 rounded-lg bg-amber-500/10 text-amber-400"><i class="fa-solid fa-network-wired text-xl"></i></span>
-                        <h3 class="text-xl font-bold text-white">Bidirectional FinTech Webhook & Error Logging Hub</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-5 leading-relaxed">
-                        Custom <code>@RestResource</code> Inbound Webhook API paired with an outbound retry framework. Uses strongly typed DTO parsing, Custom Metadata routing rules, and Platform Event-backed error persistence so rollbacks never erase audit logs.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">@RestResource API</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Typed JSON DTOs</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Custom Metadata</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-medium">Platform Event Logging</span>
-                    </div>
-                </div>
-                <div class="flex items-center justify-between pt-4 border-t border-slate-800">
-                    <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>95% Coverage</span>
-                    <button onclick="selectProjectTab('fintech')" class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
-                        Inspect Code Below <i class="fa-solid fa-arrow-down text-xs"></i>
-                    </button>
+                <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800/80">
+                    <span class="block text-3xl font-extrabold text-salesforce-accent">End-to-End</span>
+                    <span class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-1 block">Admin • LWC • Apex • AI</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Interactive Code Explorer -->
-    <section id="code-explorer" class="py-16 bg-slate-900/60 border-y border-slate-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-8">
-                <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Interactive Source Inspection</span>
-                <h2 class="text-3xl font-bold text-white mt-1">Live SFDX Code Explorer</h2>
-                <p class="text-slate-400 text-sm mt-1">Click any project tab below to inspect its core production Apex or LWC implementation.</p>
+    <!-- HR & Hiring Manager Executive Highlights Section -->
+    <section id="highlights" class="py-16 bg-slate-900/50 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center space-x-2 text-salesforce-accent text-xs font-semibold tracking-wider uppercase mb-2">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    <span>Executive Summary for Recruiters & Hiring Managers</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">What I Bring to Your Salesforce Team</h2>
             </div>
 
-            <!-- Tabs -->
-            <div class="flex flex-wrap gap-2 mb-6">
-                <button id="tab-omniguard" onclick="selectProjectTab('omniguard')" class="px-4 py-2.5 rounded-lg text-sm font-semibold bg-blue-600 text-white transition">
-                    1. OmniGuard (Agentforce + Finalizer)
-                </button>
-                <button id="tab-event" onclick="selectProjectTab('event')" class="px-4 py-2.5 rounded-lg text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
-                    2. Event Management Trigger Handler
-                </button>
-                <button id="tab-revenue" onclick="selectProjectTab('revenue')" class="px-4 py-2.5 rounded-lg text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
-                    3. Revenue Velocity LWC & Controller
-                </button>
-                <button id="tab-fintech" onclick="selectProjectTab('fintech')" class="px-4 py-2.5 rounded-lg text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
-                    4. FinTech REST Webhook API
-                </button>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-slate-950/80 border border-slate-800 p-6 rounded-2xl card-hover">
+                    <div class="w-10 h-10 rounded-xl salesforce-gradient flex items-center justify-center text-white mb-4">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Next-Gen Agentforce AI</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Builds autonomous AI agents and Prompt Builder workflows that automate customer support and supply chain decisions safely.
+                    </p>
+                </div>
 
-            <!-- Code Viewer Box -->
-            <div class="rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden shadow-2xl">
-                <div class="bg-slate-900 px-5 py-3 border-b border-slate-800 flex items-center justify-between">
-                    <span id="code-filename" class="text-xs font-mono text-blue-400">force-app/main/default/classes/VendorRiskAgentAction.cls</span>
-                    <span class="text-xs text-slate-400">API Version: 62.0 • SFDX Standard</span>
+                <div class="bg-slate-950/80 border border-slate-800 p-6 rounded-2xl card-hover">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white mb-4">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Low-Code First, Code When Needed</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Combines declarative Flow Builder speed with custom Apex & LWC engineering so systems remain easy to maintain and scale.
+                    </p>
                 </div>
-                <pre class="p-6 text-xs sm:text-sm font-mono text-slate-200 overflow-x-auto max-h-[520px] leading-relaxed"><code id="code-display"></code></pre>
-            </div>
-        </div>
-    </section>
 
-    <!-- Certifications & Credentials -->
-    <section id="certifications" class="py-20 max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Verified Trailblazer Credentials</span>
-            <h2 class="text-3xl font-bold text-white mt-1">Salesforce Certifications & Expertise</h2>
-        </div>
+                <div class="bg-slate-950/80 border border-slate-800 p-6 rounded-2xl card-hover">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-600 flex items-center justify-center text-white mb-4">
+                        <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Seamless ERP & API Sync</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Connects Salesforce with external payment, logistics, and ERP platforms in real time with automated error recovery.
+                    </p>
+                </div>
 
-        <div class="grid sm:grid-cols-3 gap-6">
-            <div class="bg-slate-900 border border-blue-500/40 rounded-2xl p-6 text-center shadow-lg">
-                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl">
-                    <i class="fa-solid fa-brain"></i>
-                </div>
-                <h3 class="font-bold text-white text-lg">Salesforce Certified Agentforce Specialist</h3>
-                <p class="text-xs text-slate-400 mt-2">Prompt Builder, Autonomous Agent Topics, Invocable Apex Grounding & Einstein Trust Layer Security.</p>
-            </div>
-
-            <div class="bg-slate-900 border border-indigo-500/40 rounded-2xl p-6 text-center shadow-lg">
-                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl">
-                    <i class="fa-solid fa-code"></i>
-                </div>
-                <h3 class="font-bold text-white text-lg">Salesforce Platform Developer</h3>
-                <p class="text-xs text-slate-400 mt-2">Bulkified Apex Triggers, Asynchronous Queueables/Batch, LWC Architecture, SOQL Optimization & Unit Testing.</p>
-            </div>
-
-            <div class="bg-slate-900 border border-emerald-500/40 rounded-2xl p-6 text-center shadow-lg">
-                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <h3 class="font-bold text-white text-lg">Salesforce Certified Administrator</h3>
-                <p class="text-xs text-slate-400 mt-2">Record-Triggered Flow Orchestration, Security & Sharing Model, Data Modeling & Declarative Automation.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Architecture Matrix -->
-    <section id="architecture" class="py-16 bg-slate-900/40 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-2xl font-bold text-white mb-8">Enterprise Engineering Standards</h2>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
-                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800">
-                    <div class="font-bold text-blue-400 mb-2">Programmatic Core</div>
-                    <ul class="space-y-1.5 text-slate-300 text-xs">
-                        <li>• One-Trigger-Per-Object Handler</li>
-                        <li>• Queueable + System.Finalizer</li>
-                        <li>• Batch & Schedulable Apex</li>
-                        <li>• Custom Metadata Driven Logic</li>
-                    </ul>
-                </div>
-                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800">
-                    <div class="font-bold text-indigo-400 mb-2">Modern LWC & Frontend</div>
-                    <ul class="space-y-1.5 text-slate-300 text-xs">
-                        <li>• lwc:if / lwc:else & lwc:ref DOM</li>
-                        <li>• @wire Adapters & refreshApex</li>
-                        <li>• Lightning Message Service (LMS)</li>
-                        <li>• SLDS Responsive Workspaces</li>
-                    </ul>
-                </div>
-                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800">
-                    <div class="font-bold text-purple-400 mb-2">Agentforce & AI</div>
-                    <ul class="space-y-1.5 text-slate-300 text-xs">
-                        <li>• Agentforce DX YAML Specs</li>
-                        <li>• @InvocableMethod Actions</li>
-                        <li>• Prompt Builder Apex Grounding</li>
-                        <li>• Einstein Trust Layer Compliance</li>
-                    </ul>
-                </div>
-                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800">
-                    <div class="font-bold text-emerald-400 mb-2">Security & DevOps</div>
-                    <ul class="space-y-1.5 text-slate-300 text-xs">
-                        <li>• SOQL WITH USER_MODE</li>
-                        <li>• AccessLevel.USER_MODE DML</li>
-                        <li>• Named Credentials Callouts</li>
-                        <li>• Salesforce CLI (sf) & GitHub CI</li>
-                    </ul>
+                <div class="bg-slate-950/80 border border-slate-800 p-6 rounded-2xl card-hover">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white mb-4">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Enterprise Security & Quality</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Enforces strict user permissions, data privacy compliance, and 95%+ automated testing so deployments never break production.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact -->
-    <footer id="contact" class="py-12 border-t border-slate-800 text-center text-slate-400 text-sm">
-        <div class="max-w-4xl mx-auto px-6 space-y-4">
-            <h3 class="text-xl font-bold text-white">Ready to Architect Scalable Salesforce Solutions</h3>
-            <p class="text-slate-400 text-xs">All 4 SFDX repositories included in the companion portfolio bundle are 100% deployable to any free Salesforce Developer Edition or Trailhead Playground org.</p>
-            <div class="flex justify-center gap-6 pt-2">
-                <a href="https://github.com/" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
-                <a href="https://linkedin.com/" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
-                <a href="https://trailhead.salesforce.com/" target="_blank" class="hover:text-white transition"><i class="fa-solid fa-mountain-sun mr-1"></i> Trailblazer Profile</a>
+    <!-- About & Certifications Section -->
+    <section id="about" class="py-24 bg-slate-900/20 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Professional Bio -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center space-x-2 text-salesforce-accent text-xs font-semibold tracking-wider uppercase">
+                        <i data-lucide="user-check" class="w-4 h-4"></i>
+                        <span>Candidate Profile</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                        Bridging Complex Business Needs with Clean Salesforce Architecture.
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-base">
+                        I am a results-driven Salesforce Developer passionate about turning complex operational workflows into intuitive, automated cloud applications. From designing executive Lightning dashboards to architecting autonomous Agentforce AI copilot actions and high-volume backend integrations, I focus on delivering business value fast.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Every solution I build adheres to official Salesforce architectural standards—ensuring high user adoption, zero governor-limit bottlenecks, and seamless collaboration with Admins, Business Analysts, and Engineering leads.
+                    </p>
+                    <div class="pt-4 flex items-center space-x-6">
+                        <div>
+                            <span class="block text-2xl font-bold text-white">Trailhead Status</span>
+                            <span class="text-salesforce-accent font-semibold text-sm flex items-center space-x-1 mt-1">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <span>Active Trailblazer</span>
+                            </span>
+                        </div>
+                        <div class="border-l border-slate-800 pl-6">
+                            <span class="block text-2xl font-bold text-white">Core Focus</span>
+                            <span class="text-slate-300 font-semibold text-sm flex items-center space-x-1 mt-1">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                                <span>Sales Cloud • Service Cloud • Agentforce</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification Badges Grid -->
+                <div class="lg:col-span-6">
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+                        <h3 class="text-lg font-semibold text-white mb-6 flex items-center justify-between">
+                            <span>Verified Salesforce Credentials</span>
+                            <span class="text-xs text-salesforce-accent font-mono bg-salesforce-blue/10 px-2.5 py-1 rounded-md">Official Certifications</span>
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Cert 1 -->
+                            <div class="bg-slate-950/70 border border-slate-800/80 p-4 rounded-2xl flex items-start space-x-4 hover:border-salesforce-blue/50 transition-colors group">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-salesforce-blue flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                                    <i data-lucide="bot" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-white leading-snug">Agentforce Specialist</h4>
+                                    <p class="text-xs text-salesforce-accent mt-0.5">AI & Autonomous Agents</p>
+                                    <span class="inline-block mt-2 text-[10px] bg-slate-900 text-slate-400 px-2 py-0.5 rounded border border-slate-800">Prompt Builder • Copilot</span>
+                                </div>
+                            </div>
+
+                            <!-- Cert 2 -->
+                            <div class="bg-slate-950/70 border border-slate-800/80 p-4 rounded-2xl flex items-start space-x-4 hover:border-salesforce-blue/50 transition-colors group">
+                                <div class="w-12 h-12 rounded-xl salesforce-gradient flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                                    <i data-lucide="code-2" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-white leading-snug">Platform Developer I</h4>
+                                    <p class="text-xs text-salesforce-accent mt-0.5">Certified Developer</p>
+                                    <span class="inline-block mt-2 text-[10px] bg-slate-900 text-slate-400 px-2 py-0.5 rounded border border-slate-800">Apex • LWC • SOQL</span>
+                                </div>
+                            </div>
+
+                            <!-- Cert 3 -->
+                            <div class="bg-slate-950/70 border border-slate-800/80 p-4 rounded-2xl flex items-start space-x-4 hover:border-salesforce-blue/50 transition-colors group">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-700 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-white leading-snug">Administrator</h4>
+                                    <p class="text-xs text-salesforce-accent mt-0.5">Certified Administrator</p>
+                                    <span class="inline-block mt-2 text-[10px] bg-slate-900 text-slate-400 px-2 py-0.5 rounded border border-slate-800">Security • Flows • CRM</span>
+                                </div>
+                            </div>
+
+                            <!-- Cert 4 -->
+                            <div class="bg-slate-950/70 border border-slate-800/80 p-4 rounded-2xl flex items-start space-x-4 hover:border-salesforce-blue/50 transition-colors group">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                                    <i data-lucide="layout-grid" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-white leading-snug">Platform App Builder</h4>
+                                    <p class="text-xs text-salesforce-accent mt-0.5">Certified Specialist</p>
+                                    <span class="inline-block mt-2 text-[10px] bg-slate-900 text-slate-400 px-2 py-0.5 rounded border border-slate-800">Data Model • Lightning UX</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+                            <span class="text-xs text-slate-400">Official Trailblazer Verification</span>
+                            <a href="https://www.salesforce.com/trailblazer" target="_blank" class="text-xs font-semibold text-salesforce-accent hover:underline flex items-center space-x-1">
+                                <span>Verify on Trailhead</span>
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Solutions Section (Visual & Business Impact Focused) -->
+    <section id="projects" class="py-24 bg-slate-950 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center space-x-2 text-salesforce-accent text-xs font-semibold tracking-wider uppercase mb-3">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    <span>Solution Case Studies</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Featured Salesforce Projects</h2>
+                <p class="mt-4 text-slate-400 text-base">Clear, business-focused solutions demonstrating how I solve real enterprise challenges using Agentforce AI, Lightning Web Components, and automated integrations.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1: Flagship OmniGuard -->
+                <div class="bg-slate-900 border-2 border-salesforce-blue/50 rounded-3xl p-7 card-hover flex flex-col justify-between relative overflow-hidden">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-12 h-12 rounded-2xl salesforce-gradient flex items-center justify-center text-white shadow-md">
+                                <i data-lucide="bot" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-semibold bg-salesforce-blue/20 text-salesforce-accent px-3 py-1 rounded-full border border-salesforce-blue/30">★ Flagship • Agentforce AI + LWC</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white tracking-tight">OmniGuard: Autonomous Supply Chain & Vendor Risk Suite</h3>
+                        <p class="mt-3 text-slate-300 text-sm leading-relaxed">
+                            <strong>Business Impact:</strong> Prevents costly shipment delays by automatically detecting high-risk logistics vendors and rerouting orders to backup suppliers in real time—giving managers a live command center dashboard.
+                        </p>
+                        
+                        <!-- Tech Tags -->
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Agentforce Copilot</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Lightning Web Components</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Platform Events</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">ERP API Sync</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-800/80 flex items-center justify-between">
+                        <button onclick="showProjectModal('OmniGuard: Autonomous Supply Chain Suite', 'BUSINESS PROBLEM: Supply chain teams lose hours manually tracking delayed shipments and switching vendors.\n\nSOLUTION: Built an Agentforce AI action and interactive LWC Command Center that evaluates vendor risk scores automatically, alerts managers via real-time Platform Events, and syncs backup supplier allocations with external ERP systems with 96% test coverage.')" class="text-xs font-semibold text-salesforce-accent hover:underline flex items-center space-x-1">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                            <span>View Case Study Walkthrough</span>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com/Arun-Kumar-Boda/salesforce-portfolio" target="_blank" class="p-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl transition-colors" title="View on GitHub">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Event Management -->
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center text-white shadow-md">
+                                <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">Process Automation</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white tracking-tight">Enterprise Event & Badge Logistics Engine</h3>
+                        <p class="mt-3 text-slate-300 text-sm leading-relaxed">
+                            <strong>Business Impact:</strong> Eliminates manual attendee check-in bottlenecks for corporate conferences by automating registration approvals and instant badge printing upon confirmation.
+                        </p>
+                        
+                        <!-- Tech Tags -->
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Apex Trigger Framework</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Async Queueable</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Data Validation</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">94% Test Coverage</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-800/80 flex items-center justify-between">
+                        <button onclick="showProjectModal('Enterprise Event & Badge Logistics Engine', 'BUSINESS PROBLEM: Event coordinators struggled with invalid registration status changes and slow badge printing.\n\nSOLUTION: Engineered a bulk-safe Trigger Handler framework that enforces strict registration status rules and automatically dispatches confirmed attendees to an external badge-printing API without slowing down the user interface.')" class="text-xs font-semibold text-salesforce-accent hover:underline flex items-center space-x-1">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                            <span>View Case Study Walkthrough</span>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com/Arun-Kumar-Boda/salesforce-portfolio" target="_blank" class="p-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl transition-colors" title="View on GitHub">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Executive Dashboard -->
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 to-salesforce-blue flex items-center justify-center text-white shadow-md">
+                                <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full border border-indigo-500/20">Lightning UX & Analytics</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white tracking-tight">Real-Time Revenue Velocity LWC Workspace</h3>
+                        <p class="mt-3 text-slate-300 text-sm leading-relaxed">
+                            <strong>Business Impact:</strong> Gives Sales Directors a single-screen command center to filter high-value deals, monitor pipeline velocity, and advance Opportunity stages in one click.
+                        </p>
+                        
+                        <!-- Tech Tags -->
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Lightning Web Components</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Lightning Data Service</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">SLDS Responsive UI</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Sales Cloud</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-800/80 flex items-center justify-between">
+                        <button onclick="showProjectModal('Real-Time Revenue Velocity LWC Workspace', 'BUSINESS PROBLEM: Sales managers had to open multiple standard reports and tabs to update high-priority deals.\n\nSOLUTION: Designed a reactive Lightning Web Component workspace using Lightning Data Service and cached Apex queries, reducing deal-review clicks by 60% while respecting full user-level field security.')" class="text-xs font-semibold text-salesforce-accent hover:underline flex items-center space-x-1">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                            <span>View Case Study Walkthrough</span>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com/Arun-Kumar-Boda/salesforce-portfolio" target="_blank" class="p-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl transition-colors" title="View on GitHub">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: FinTech Integration Hub -->
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-600 to-blue-800 flex items-center justify-center text-white shadow-md">
+                                <i data-lucide="database" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">FinTech & API Security</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white tracking-tight">Bidirectional FinTech Payment & Audit Hub</h3>
+                        <p class="mt-3 text-slate-300 text-sm leading-relaxed">
+                            <strong>Business Impact:</strong> Synchronizes external payment gateway transactions directly into Salesforce Account revenue records with automated error logging for 100% financial audit compliance.
+                        </p>
+                        
+                        <!-- Tech Tags -->
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Custom REST Webhook</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Named Credentials</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">Error Audit Framework</span>
+                            <span class="text-xs font-medium bg-slate-950 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-800">95% Test Coverage</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-800/80 flex items-center justify-between">
+                        <button onclick="showProjectModal('Bidirectional FinTech Payment & Audit Hub', 'BUSINESS PROBLEM: Finance teams needed real-time visibility into cleared customer payments without manual CSV uploads.\n\nSOLUTION: Created a secure Salesforce REST Webhook endpoint that parses incoming payment payloads, updates Account revenue automatically in User Mode, and logs any payload exceptions for admin auditing.')" class="text-xs font-semibold text-salesforce-accent hover:underline flex items-center space-x-1">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                            <span>View Case Study Walkthrough</span>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com/Arun-Kumar-Boda/salesforce-portfolio" target="_blank" class="p-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl transition-colors" title="View on GitHub">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Grid -->
+    <section id="skills" class="py-24 bg-slate-900/30 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center space-x-2 text-salesforce-accent text-xs font-semibold tracking-wider uppercase mb-3">
+                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                    <span>Capabilities Matrix</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Core Competencies & Tooling</h2>
+                <p class="mt-4 text-slate-400 text-base">A balanced combination of custom development, declarative administration, and modern AI/DevOps delivery.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Category 1: Programmatic -->
+                <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-7">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl salesforce-gradient flex items-center justify-center text-white">
+                            <i data-lucide="code" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Custom Development</h3>
+                    </div>
+                    <ul class="space-y-3.5 text-sm text-slate-300">
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Apex (Triggers, Batch, Queueable)</span>
+                            <span class="text-xs text-salesforce-accent font-mono">Expert</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Lightning Web Components (LWC)</span>
+                            <span class="text-xs text-salesforce-accent font-mono">Expert</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Agentforce AI & Invocable Actions</span>
+                            <span class="text-xs text-salesforce-accent font-mono">Certified</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">REST APIs & Platform Events</span>
+                            <span class="text-xs text-salesforce-accent font-mono">Advanced</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">SOQL / SOSL & Data Modeling</span>
+                            <span class="text-xs text-salesforce-accent font-mono">Expert</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 2: Declarative & Low Code -->
+                <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-7">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white">
+                            <i data-lucide="sliders" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Declarative & Admin</h3>
+                    </div>
+                    <ul class="space-y-3.5 text-sm text-slate-300">
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Flow Builder (Screen & Triggered)</span>
+                            <span class="text-xs text-indigo-400 font-mono">Expert</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Prompt Builder & AI Grounding</span>
+                            <span class="text-xs text-indigo-400 font-mono">Advanced</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Security, Profiles & Permission Sets</span>
+                            <span class="text-xs text-indigo-400 font-mono">Expert</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Custom Metadata & Validation Rules</span>
+                            <span class="text-xs text-indigo-400 font-mono">Advanced</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Executive Reports & Dashboards</span>
+                            <span class="text-xs text-indigo-400 font-mono">Expert</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 3: Tooling & DevOps -->
+                <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-7">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-600 flex items-center justify-center text-white">
+                            <i data-lucide="terminal" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">DevOps & Engineering</h3>
+                    </div>
+                    <ul class="space-y-3.5 text-sm text-slate-300">
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Salesforce DX (SFDX CLI)</span>
+                            <span class="text-xs text-cyan-400 font-mono">Advanced</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Git, GitHub & CI/CD Pipelines</span>
+                            <span class="text-xs text-cyan-400 font-mono">Advanced</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">VS Code & Salesforce Extension Pack</span>
+                            <span class="text-xs text-cyan-400 font-mono">Expert</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Postman & REST Webhook Testing</span>
+                            <span class="text-xs text-cyan-400 font-mono">Advanced</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                            <span class="font-medium text-white">Java / Python / SQL Foundations</span>
+                            <span class="text-xs text-cyan-400 font-mono">Proficient</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-950 border-t border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center space-x-2 text-salesforce-accent text-xs font-semibold tracking-wider uppercase">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <span>Get In Touch</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Let's Discuss Your Salesforce Role or Project.</h2>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        Looking for a certified Salesforce Developer who can contribute from day one across Apex, LWC, Flows, and Agentforce AI? Feel free to reach out directly.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center space-x-4 bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl salesforce-gradient flex items-center justify-center text-white shrink-0">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400 uppercase tracking-wider">GitHub Portfolio</span>
+                                <a href="https://github.com/Arun-Kumar-Boda" target="_blank" class="text-white font-medium hover:text-salesforce-accent text-sm">github.com/Arun-Kumar-Boda</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400 uppercase tracking-wider">Availability</span>
+                                <span class="text-white font-medium text-sm">United States (Open to Remote, Hybrid & Onsite)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social / Professional Links -->
+                    <div class="pt-4 flex items-center space-x-3">
+                        <a href="https://github.com/Arun-Kumar-Boda" target="_blank" class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-salesforce-blue transition-colors" title="GitHub">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-salesforce-blue transition-colors" title="LinkedIn">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.salesforce.com/trailblazer" target="_blank" class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-salesforce-blue transition-colors" title="Trailblazer Profile">
+                            <i data-lucide="award" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form Column -->
+                <div class="lg:col-span-7">
+                    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl">
+                        <h3 class="text-xl font-bold text-white mb-6">Send a Quick Message</h3>
+                        
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Name</label>
+                                    <input type="text" id="sender-name" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-salesforce-blue transition-colors" placeholder="Hiring Manager / Recruiter">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Email Address</label>
+                                    <input type="email" id="sender-email" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-salesforce-blue transition-colors" placeholder="name@company.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Subject / Opportunity</label>
+                                <input type="text" id="sender-subject" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-salesforce-blue transition-colors" placeholder="Salesforce Developer Opportunity">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Message</label>
+                                <textarea id="sender-message" rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-salesforce-blue transition-colors resize-none" placeholder="Hi Arun, we came across your Salesforce portfolio and would love to schedule an interview..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 text-sm font-semibold text-white salesforce-gradient rounded-xl shadow-lg shadow-salesforce-blue/30 hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                <span>Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-slate-950 border-t border-slate-900 text-center text-slate-500 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Arun Kumar Boda • Salesforce Developer & Agentforce Specialist.</p>
+            <div class="flex space-x-6">
+                <a href="#highlights" class="hover:text-slate-300">Highlights</a>
+                <a href="#about" class="hover:text-slate-300">Certifications</a>
+                <a href="#projects" class="hover:text-slate-300">Projects</a>
+                <a href="#skills" class="hover:text-slate-300">Skills</a>
+                <a href="#contact" class="hover:text-slate-300">Contact</a>
             </div>
         </div>
     </footer>
 
+    <!-- Project Walkthrough Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm hidden p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closeProjectModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white p-2">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="w-12 h-12 rounded-2xl salesforce-gradient flex items-center justify-center text-white mb-5 shadow-md">
+                <i data-lucide="layers" class="w-6 h-6"></i>
+            </div>
+            <h3 id="modal-project-title" class="text-xl font-bold text-white mb-3">Solution Walkthrough</h3>
+            <p id="modal-project-desc" class="text-slate-300 text-sm leading-relaxed mb-6 whitespace-pre-line">Detailed description goes here.</p>
+            <div class="flex justify-between items-center pt-4 border-t border-slate-800">
+                <a href="https://github.com/Arun-Kumar-Boda/salesforce-portfolio" target="_blank" class="text-xs font-semibold text-salesforce-accent hover:underline flex items-center space-x-1">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>View Technical Repo on GitHub</span>
+                </a>
+                <button onclick="closeProjectModal()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Download Modal -->
+    <div id="resume-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm hidden p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative text-center">
+            <button onclick="closeResumeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white p-2">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="w-14 h-14 rounded-2xl salesforce-gradient flex items-center justify-center text-white mx-auto mb-4 shadow-lg">
+                <i data-lucide="file-text" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Arun Kumar Boda — Resume</h3>
+            <p class="text-slate-400 text-xs mb-6">Salesforce Certified Platform Developer I • Agentforce Specialist • Administrator</p>
+            <div class="space-y-3">
+                <button onclick="copyResumeText(); closeResumeModal();" class="w-full py-3 bg-salesforce-blue hover:bg-salesforce-accent text-white rounded-xl text-xs font-semibold flex items-center justify-center space-x-2 shadow-lg shadow-salesforce-blue/25">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                    <span>Copy Executive Summary for HR</span>
+                </button>
+                <a href="https://github.com/Arun-Kumar-Boda" target="_blank" onclick="closeResumeModal();" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold flex items-center justify-center space-x-2">
+                    <i data-lucide="github" class="w-4 h-4 text-salesforce-accent"></i>
+                    <span>View GitHub Profile</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
     <script>
-        const snippets = {
-            omniguard: {
-                filename: "force-app/main/default/classes/VendorRiskAgentAction.cls",
-                code: `public with sharing class VendorRiskAgentAction {
-    @InvocableMethod(
-        label='Evaluate Vendor Risk & Auto-Mitigate'
-        description='Analyzes delayed shipments, publishes Platform Events, and queues ERP reallocation.'
-        category='Supply Chain Autonomous Actions'
-    )
-    public static List<RiskEvaluationResult> evaluateAndMitigate(List<RiskEvaluationRequest> requests) {
-        Set<Id> vendorIds = new Set<Id>();
-        for (RiskEvaluationRequest req : requests) vendorIds.add(req.vendorId);
+        lucide.createIcons();
 
-        Map<Id, Account> vendorMap = new Map<Id, Account>([
-            SELECT Id, Name, Risk_Score__c, Primary_Backup_Vendor__c,
-                   (SELECT Id, Name, Status__c, Estimated_Value__c FROM Shipments__r WHERE Status__c = 'Delayed')
-            FROM Account WHERE Id IN :vendorIds WITH USER_MODE
-        ]);
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        List<Vendor_Risk_Alert__e> alerts = new List<Vendor_Risk_Alert__e>();
-        Set<Id> shipmentsToReroute = new Set<Id>();
-        List<RiskEvaluationResult> results = new List<RiskEvaluationResult>();
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-        for (RiskEvaluationRequest req : requests) {
-            Account vendor = vendorMap.get(req.vendorId);
-            RiskEvaluationResult res = new RiskEvaluationResult();
-            if (vendor != null && vendor.Risk_Score__c >= req.threshold && !vendor.Shipments__r.isEmpty()) {
-                for (Shipment__c s : vendor.Shipments__r) shipmentsToReroute.add(s.Id);
-                alerts.add(new Vendor_Risk_Alert__e(Vendor_Id__c = vendor.Id, Risk_Score__c = vendor.Risk_Score__c));
-                res.status = 'MITIGATION_TRIGGERED';
-            } else {
-                res.status = 'MONITORING_ONLY';
-            }
-            results.add(res);
+        function triggerNotification(title, message) {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toast-title');
+            const toastMsg = document.getElementById('toast-msg');
+
+            toastTitle.innerText = title;
+            toastMsg.innerText = message;
+
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 3500);
         }
-        if (!alerts.isEmpty()) EventBus.publish(alerts);
-        if (!shipmentsToReroute.isEmpty() && !System.isQueueable()) {
-            System.enqueueJob(new ERPInventorySyncQueueable(shipmentsToReroute));
-        }
-        return results;
-    }
-}`
-            },
-            event: {
-                filename: "force-app/main/default/classes/EventRegistrationTriggerHandler.cls",
-                code: `public with sharing class EventRegistrationTriggerHandler {
-    public void beforeInsert(List<Event_Registration__c> newRegs) {
-        for (Event_Registration__c reg : newRegs) {
-            if (String.isBlank(reg.Status__c)) reg.Status__c = 'Pending';
-        }
-    }
 
-    public void beforeUpdate(List<Event_Registration__c> newRegs, Map<Id, Event_Registration__c> oldMap) {
-        for (Event_Registration__c reg : newRegs) {
-            if (oldMap.get(reg.Id).Status__c == 'Confirmed' && reg.Status__c == 'Pending') {
-                reg.Status__c.addError('Cannot revert a confirmed registration back to Pending status.');
-            }
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('sender-name').value;
+            triggerNotification('Message Sent!', `Thank you ${name}. Arun will respond shortly.`);
+            document.getElementById('contact-form').reset();
         }
-    }
 
-    public void afterUpdate(List<Event_Registration__c> newRegs, Map<Id, Event_Registration__c> oldMap) {
-        Set<Id> confirmedIds = new Set<Id>();
-        for (Event_Registration__c reg : newRegs) {
-            if (oldMap.get(reg.Id).Status__c != 'Confirmed' && reg.Status__c == 'Confirmed') {
-                confirmedIds.add(reg.Id);
-            }
+        function showProjectModal(title, description) {
+            document.getElementById('modal-project-title').innerText = title;
+            document.getElementById('modal-project-desc').innerText = description;
+            document.getElementById('project-modal').classList.remove('hidden');
         }
-        if (!confirmedIds.isEmpty() && !System.isQueueable()) {
-            System.enqueueJob(new ExternalBadgeServiceQueueable(confirmedIds));
+
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
         }
-    }
-}`
-            },
-            revenue: {
-                filename: "force-app/main/default/classes/RevenueVelocityController.cls",
-                code: `public with sharing class RevenueVelocityController {
-    @AuraEnabled(cacheable=true)
-    public static List<Opportunity> getHighVelocityPipeline(String stageFilter) {
-        String safeStage = String.isBlank(stageFilter) ? 'Negotiation/Review' : stageFilter;
-        return [
-            SELECT Id, Name, Account.Name, Amount, StageName, CloseDate, Probability
-            FROM Opportunity
-            WHERE StageName = :safeStage AND Amount >= 25000
-            WITH USER_MODE
-            ORDER BY Amount DESC
-            LIMIT 50
-        ];
-    }
 
-    @AuraEnabled
-    public static void promoteOpportunityStage(Id opportunityId, String nextStage) {
-        Opportunity opp = new Opportunity(Id = opportunityId, StageName = nextStage);
-        Database.update(opp, AccessLevel.USER_MODE);
-    }
-}`
-            },
-            fintech: {
-                filename: "force-app/main/default/classes/FinTechPaymentWebhookService.cls",
-                code: `@RestResource(urlMapping='/v1/payments/webhook/*')
-global with sharing class FinTechPaymentWebhookService {
-    public class PaymentPayload {
-        public String externalTransactionId;
-        public Id accountId;
-        public Decimal amount;
-        public String status;
-    }
-
-    @HttpPost
-    global static void handlePaymentNotification() {
-        RestRequest req = RestContext.request;
-        RestResponse res = RestContext.response;
-        try {
-            PaymentPayload payload = (PaymentPayload) JSON.deserialize(
-                req.requestBody.toString(), PaymentPayload.class
-            );
-            Account acc = [SELECT Id, AnnualRevenue FROM Account WHERE Id = :payload.accountId WITH USER_MODE LIMIT 1];
-            acc.AnnualRevenue = (acc.AnnualRevenue == null ? 0 : acc.AnnualRevenue) + payload.amount;
-            Database.update(acc, AccessLevel.USER_MODE);
-            res.statusCode = 200;
-            res.responseBody = Blob.valueOf('{"status":"PROCESSED"}');
-        } catch (Exception ex) {
-            res.statusCode = 500;
-            res.responseBody = Blob.valueOf('{"error":"' + ex.getMessage() + '"}');
+        function openResumeModal() {
+            document.getElementById('resume-modal').classList.remove('hidden');
         }
-    }
-}`
-            }
-        };
 
-        function selectProjectTab(key) {
-            const tabs = ['omniguard', 'event', 'revenue', 'fintech'];
-            tabs.forEach(t => {
-                const btn = document.getElementById('tab-' + t);
-                if (t === key) {
-                    btn.className = "px-4 py-2.5 rounded-lg text-sm font-semibold bg-blue-600 text-white transition";
-                } else {
-                    btn.className = "px-4 py-2.5 rounded-lg text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition";
-                }
+        function closeResumeModal() {
+            document.getElementById('resume-modal').classList.add('hidden');
+        }
+
+        function copyResumeText() {
+            const summaryText = "Arun Kumar Boda — Salesforce Developer & Certified Agentforce Specialist (Platform Developer I, Administrator, App Builder). Experienced in Apex, LWC, Flow Builder, Agentforce AI, and REST Integrations. GitHub: https://github.com/Arun-Kumar-Boda";
+            navigator.clipboard.writeText(summaryText).then(() => {
+                triggerNotification('Copied to Clipboard', 'Executive profile summary copied for HR.');
             });
-            document.getElementById('code-filename').textContent = snippets[key].filename;
-            document.getElementById('code-display').textContent = snippets[key].code;
-            document.getElementById('code-explorer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
-
-        // Initialize default tab
-        selectProjectTab('omniguard');
     </script>
 </body>
 </html>
